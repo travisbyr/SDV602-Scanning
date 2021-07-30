@@ -3,6 +3,8 @@ Scans a csv file redirected into the script
  "--header" indicates the first row is a header row
 """
 import sys as sys
+import operator
+import functools
 import argparse
 
 
@@ -41,22 +43,26 @@ def sum_of(column_name, a_list_of_dictionary):
     Return one value that is the sum of the column 
     column_name of each "row" (dictionary)
     """
-    #print([a_list_of_dictionary['Value']])
-    x = 0;
-    for i in range (0, len(a_list_of_dictionary)):
+    x = 0
+    for i in range(0, len(a_list_of_dictionary)):
         x = x + int(a_list_of_dictionary[i][column_name])
     print(column_name + ": " + str(x))
 
 # Exercise Two
 
 
-def multiple_cols(column_names, a_list_of_dictioinary):
+def multiple_cols(column_names, a_list_of_dictionary):
     """
     Return a new list of "rows" (dictionary)
     That multiples the values of the named columns
-
     """
-    pass
+    x = []
+    for i in range(0, len(a_list_of_dictionary)):
+        x.append(int(a_list_of_dictionary[i][column_names]))
+    product = 1
+    for i in x:
+        product *= i
+    print(column_names + ": " + str(product))
 
 # Exercise Three
 # - fix display_table so that the columns all line up
@@ -95,6 +101,5 @@ if __name__ == "__main__":
     dict_lst, values_lst = scan(args['header'])
     display_table(dict_lst)
 
-    sum_of(" Item",dict_lst)
-
-    
+    sum_of(" Item", dict_lst)
+    multiple_cols("Width", dict_lst)
