@@ -41,7 +41,11 @@ def sum_of(column_name, a_list_of_dictionary):
     Return one value that is the sum of the column 
     column_name of each "row" (dictionary)
     """
-    pass
+    #print([a_list_of_dictionary['Value']])
+    x = 0;
+    for i in range (0, len(a_list_of_dictionary)):
+        x = x + int(a_list_of_dictionary[i][column_name])
+    print(column_name + ": " + str(x))
 
 # Exercise Two
 
@@ -90,3 +94,7 @@ if __name__ == "__main__":
     #print(f'The args are {args}')
     dict_lst, values_lst = scan(args['header'])
     display_table(dict_lst)
+
+    sum_of(" Item",dict_lst)
+
+    
